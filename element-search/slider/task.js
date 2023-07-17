@@ -1,10 +1,10 @@
 // script.js
 document.addEventListener('DOMContentLoaded', function() {
-  var prevArrow = document.querySelector('.slider__arrow_prev');
-  var nextArrow = document.querySelector('.slider__arrow_next');
-  var dots = Array.from(document.querySelectorAll('.slider__dot'));
-  var items = Array.from(document.querySelectorAll('.slider__item'));
-  var currentIndex = 0;
+  let prevArrow = document.querySelector('.slider__arrow_prev');
+  let nextArrow = document.querySelector('.slider__arrow_next');
+  let dots = Array.from(document.querySelectorAll('.slider__dot'));
+  let items = Array.from(document.querySelectorAll('.slider__item'));
+  let currentIndex = 0;
 
   function showSlide(index) {
     items.forEach(function(item) {
