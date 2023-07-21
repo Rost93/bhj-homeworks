@@ -12,8 +12,8 @@ class Game {
 
   reset() {
     this.setNewWord();
-    this.winsElement.textContent = 0;
-    this.lossElement.textContent = 0;
+    this.winsElement.textContent = '0';
+    this.lossElement.textContent = '0';
   }
 
   registerEvents() {
@@ -37,6 +37,20 @@ class Game {
     });
   }
 
+  handleWin() {
+    if (parseInt(this.winsElement.textContent) === 10) {
+      alert('Поздравляем! Вы победили!');
+      this.reset();
+    }
+  }
+
+  handleLoss() {
+    if (parseInt(this.lossElement.textContent) === 3) {
+      alert('Вы проиграли! Попробуйте ещё раз.');
+      this.reset();
+    }
+  }
+
   success() {
     this.currentSymbol.classList.remove('symbol_current');
     this.currentSymbol.classList.add('symbol_correct');
@@ -44,21 +58,16 @@ class Game {
 
     if (this.currentSymbol !== null) {
       this.currentSymbol.classList.add('symbol_current');
-      return;
+    } else {
+      this.winsElement.textContent = parseInt(this.winsElement.textContent) + 1;
+      this.handleWin();
+      this.setNewWord();
     }
-
-    if (++this.winsElement.textContent === '10') {
-      alert('Победа!');
-      this.reset();
-    }
-    this.setNewWord();
   }
 
   fail() {
-    if (++this.lossElement.textContent === '5') {
-      alert('Вы проиграли!');
-      this.reset();
-    }
+    this.lossElement.textContent = parseInt(this.lossElement.textContent) + 1;
+    this.handleLoss();
     this.setNewWord();
   }
 
@@ -101,4 +110,3 @@ class Game {
 }
 
 new Game(document.getElementById('game'));
-
