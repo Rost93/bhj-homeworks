@@ -2,13 +2,11 @@ const editor = document.getElementById('editor');
 
 // При загрузке страницы
 window.addEventListener('load', () => {
-  // Попытка получить значение редактора из локального хранилища
+  // Получаем значение редактора из локального хранилища
   const savedText = localStorage.getItem('editorText');
   
-  // Если значение есть, устанавливаем его в редактор
-  if (savedText) {
-    editor.value = savedText;
-  }
+  // Устанавливаем значение редактора из локального хранилища
+  editor.value = savedText;
 });
 
 // При изменении содержимого редактора

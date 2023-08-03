@@ -1,4 +1,3 @@
-// Обработчик для кнопки входа
 document.getElementById('signin__btn').addEventListener('click', async function(event) {
   event.preventDefault();
 
@@ -21,19 +20,9 @@ document.getElementById('signin__btn').addEventListener('click', async function(
       const userIdSpan = document.getElementById('user_id');
       userIdSpan.textContent = data.user_id;
       welcomeBlock.classList.add('welcome_active');
+      document.getElementById('signin__form').reset(); // Сброс формы
   } else {
       const errorElement = document.getElementById('error');
       errorElement.textContent = 'Неверный логин/пароль';
-  }
-});
-
-// Проверка при загрузке страницы
-window.addEventListener('load', function() {
-  const userId = localStorage.getItem('user_id');
-  if (userId) {
-      const welcomeBlock = document.getElementById('welcome');
-      const userIdSpan = document.getElementById('user_id');
-      userIdSpan.textContent = userId;
-      welcomeBlock.classList.add('welcome_active');
   }
 });
